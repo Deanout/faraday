@@ -1,0 +1,13 @@
+<%= flash[:alert] if flash[:alert] %>
+<%= flash[:notice] if flash[:notice] %>
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+<%= form_with url: create_post_path, method: :post do |form| %>
+  <%= form.text_field :title %>
+  <%= form.submit %>
+<% end %>
+<% @posts.each do |post| %>
+  <p><%= post["title"] %></p>
+  <em><%= post["views"] %></em>
+  <%= button_to "Delete", destroy_post_path(post["id"]), method: :delete %>
+<% end %>
